@@ -61,7 +61,7 @@
       const email = document.getElementById('email').value;
       const role = document.getElementById('role').value;
       const interests = document.getElementById('interests').value;
-
+    try{
       const response = await fetch('https://script.google.com/macros/s/AKfycbx5PFHWKUDJO76e2EMqlhTR1Rzf6Nc5jgJlEYUaZYSahYAbhpzkP-Dmcux0aOqoSFqs/exec', {
         method: 'POST',
 		mode: 'no-cors',
@@ -71,17 +71,20 @@
         body: JSON.stringify({ name, email, role, interests })
       });
 
-      const result = await response.json();
-      const messageEl = document.getElementById('successMessage');
+      const resultText = await response.text();
+      
       if (response.ok) {
-        messageEl.textContent = result.message;
         document.getElementById('joinForm').reset();
-	setTimeout(() => {
+        setTimeout(() => {
           window.location.href = "thankyou.html";
         }, 1000);
       } else {
-        messageEl.textContent = 'Something went wrong. Please try again later.';
+        document.getElementById('successMessage').textContent = 'Submission failed.';
       }
+    } catch (error) {
+      console.error("Error:", error);
+      document.getElementById('successMessage').textContent = 'Something went wrong.';
+    }  	    
     });
   
 </script>
