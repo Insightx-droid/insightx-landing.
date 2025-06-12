@@ -72,6 +72,7 @@
       });
 
       const resultText = await response.text();
+      console.log("Response:", resultText);	    
       
       if (response.ok) {
         document.getElementById('joinForm').reset();
