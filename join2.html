@@ -29,6 +29,10 @@
         <input type="text" id="name" name="name" required />
       </div>
       <div>
+        <label for="number">Whatsapp Number</label><br>
+        <input type="text" id="number" name="number" required />
+      </div>
+      <div>
         <label for="email">Email Address</label><br>
         <input type="email" id="email" name="email" required />
       </div>
@@ -49,9 +53,7 @@
       <button type="submit">Join Now</button>
     </form>
     <div class="success-message" id="successMessage"></div>
-    <div class="footer">
-      Already a member? <a href="#" style="color:#0a66c2; text-decoration:none; font-weight: 600;">Login here</a>
-    </div>
+    
   </div>
 
   <script>
@@ -59,6 +61,7 @@
      e.preventDefault();
 
     const name = document.getElementById('name').value;
+    const number = document.getElementById('number').value;  
     const email = document.getElementById('email').value;
     const role = document.getElementById('role').value;
     const interests = document.getElementById('interests').value;
@@ -71,6 +74,7 @@
       },
       body: JSON.stringify({
         name,
+        number,
         email,
         role,
         interests
