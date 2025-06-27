@@ -83,20 +83,6 @@
     }
   </style>
 </head>
-<script>
-  document.querySelector("form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const email = document.querySelector('input[type="email"]').value;
-    const password = document.querySelector('input[type="password"]').value;
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(userCredential => {
-        alert("Login successful!");
-        window.location.href = "projects.html"; // redirect
-      })
-      .catch(error => alert(error.message));
-  });
-</script>
   
   <!-- Firebase CDN -->
 <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
@@ -115,6 +101,20 @@
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 </script> 
+<script>
+  document.querySelector("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const email = document.querySelector('input[type="email"]').value;
+    const password = document.querySelector('input[type="password"]').value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        alert("Login successful!");
+        window.location.href = "projects.html"; // redirect
+      })
+      .catch(error => alert(error.message));
+  });
+</script>  
   
 <body>
   <div class="login-container">
