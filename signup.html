@@ -100,6 +100,21 @@
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 </script> 
+ <script>
+  document.querySelector("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const email = document.querySelector('input[type="email"]').value;
+    const password = document.querySelector('input[type="password"]').value;
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        alert("Sign up successful!");
+        window.location.href = "login.html";
+      })
+      .catch(error => alert(error.message));
+  });
+</script>
+ 
 <body>
   <div class="signup-container">
     <h2>Create Your Account</h2>
@@ -118,7 +133,7 @@
       </div>
       <button type="submit" class="btn">Sign Up</button>
       <div class="login-link">
-        Already have an account? <a href="#">Login</a>
+        Already have an account? <a href="login.html">Login</a>
       </div>
     </form>
   </div>
