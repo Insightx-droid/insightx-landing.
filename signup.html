@@ -83,6 +83,23 @@
     }
   </style>
 </head>
+  <!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+
+<script>
+  // TODO: Replace with your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAN6KT706rOwFVt7toKtzmIAvs0bpckJ6Y",
+    authDomain: "insightx-dcba0.firebaseapp.com",
+    projectId: "insightx-dcba0",
+    appId: "1:741753834351:web:c19486a9e5003b7b87b69a"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+</script> 
 <body>
   <div class="signup-container">
     <h2>Create Your Account</h2>
