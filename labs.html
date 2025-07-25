@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>InsightX Lab</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Access Labs - InsightX Lab</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #111827;
     }
 
     .navbar {
@@ -19,22 +21,18 @@
     }
 
     .navbar .logo {
-      color: #ffffff;
+      color: white;
       font-size: 1.6rem;
       font-weight: bold;
       text-decoration: none;
     }
 
     .navbar ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
+      list-style: none;
       display: flex;
       gap: 20px;
-    }
-
-    .navbar ul li {
-      display: inline;
+      margin: 0;
+      padding: 0;
     }
 
     .navbar ul li a {
@@ -42,38 +40,65 @@
       text-decoration: none;
       font-weight: 500;
       padding: 8px 12px;
-      transition: background 0.3s ease;
+      border-radius: 6px;
     }
 
     .navbar ul li a:hover {
       background-color: #3743ad;
-      border-radius: 6px;
     }
 
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
 
-      .navbar ul {
-        flex-direction: column;
-        width: 100%;
-      }
+    h1, h2 {
+      color: #1e3a8a;
+    }
 
-      .navbar ul li {
-        width: 100%;
-      }
+    .section {
+      margin-bottom: 30px;
+    }
 
-      .navbar ul li a {
-        display: block;
-        width: 100%;
-      }
+    .btn-back {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #1e3a8a;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .btn-back:hover {
+      background-color: #3743ad;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .example {
+      background: #f3f4f6;
+      padding: 20px;
+      border-left: 5px solid #1e3a8a;
+      border-radius: 6px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <a href="index.html" class="logo">InsightX Lab</a>
     <ul>
@@ -83,6 +108,61 @@
       <li><a href="educators-lab.html">Labs for Educators</a></li>
     </ul>
   </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1>Access the Labs with Smart Learning Model (SLM)</h1>
+
+    <div class="section">
+      <h2>What is the Smart Learning Model (SLM)?</h2>
+      <p>
+        The <strong>Smart Learning Model (SLM)</strong> is a next-generation AI teaching framework designed to replicate the mentorship of a human professor inside a digital lab. 
+        It uses generative AI to create project instructions, explain concepts, simulate Q&A sessions, and give feedback — just like a real instructor would do in a classroom lab setting.
+      </p>
+      <p>
+        Whether you're a student, working professional, founder, or educator, the SLM personalizes your project journey using AI-driven prompts, tools, examples, and real-time error correction.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>How SLM Helps You Learn</h2>
+      <ul>
+        <li>Breaks down complex projects into daily stepwise tasks</li>
+        <li>Explains concepts as if a professor is guiding you one-on-one</li>
+        <li>Uses GPT-generated examples, templates, and code</li>
+        <li>Answers your questions with AI tutoring in real-time</li>
+        <li>Evaluates your output with instant feedback</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Example Lab: AI-Powered Social Media Post Generator</h2>
+      <div class="example">
+        <p><strong>Project Title:</strong> Build an AI-powered Social Media Post Generator using GPT.</p>
+        <p><strong>SLM Workflow:</strong></p>
+        <ul>
+          <li>Day 1: SLM explains what GPT is, and how prompts work with examples.</li>
+          <li>Day 2: SLM provides starter code and teaches how to set up an HTML interface.</li>
+          <li>Day 3: You connect the interface to GPT and SLM gives tips to fine-tune prompts.</li>
+          <li>Day 4: SLM simulates review by asking, “Why did you choose this prompt?” and gives you suggestions to improve output tone.</li>
+          <li>Day 5: SLM helps deploy the app and reflects on what you've learned.</li>
+        </ul>
+        <p><strong>Outcome:</strong> A working AI tool and a portfolio-ready project with professor-style guidance throughout.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Who Can Access These Labs?</h2>
+      <ul>
+        <li><strong>Students:</strong> Learn AI projects as coursework supplements or capstone projects.</li>
+        <li><strong>Working Professionals:</strong> Reskill with hands-on labs and real applications.</li>
+        <li><strong>Founders:</strong> Prototype AI tools and use cases in business.</li>
+        <li><strong>Educators:</strong> Use SLM content to run modern project-based AI courses.</li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="btn-back">← Back to Home</a>
+  </div>
 
 </body>
 </html>
