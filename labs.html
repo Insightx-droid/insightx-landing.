@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InsightX Lab</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1e3a8a;
+      padding: 14px 30px;
+    }
+
+    .navbar .logo {
+      color: #ffffff;
+      font-size: 1.6rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar ul li {
+      display: inline;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      transition: background 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+      background-color: #3743ad;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .navbar ul li {
+        width: 100%;
+      }
+
+      .navbar ul li a {
+        display: block;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">InsightX Lab</a>
+    <ul>
+      <li><a href="students-lab.html">Labs for Students</a></li>
+      <li><a href="professionals-lab.html">Labs for Professionals</a></li>
+      <li><a href="founders-lab.html">Labs for Founders</a></li>
+      <li><a href="educators-lab.html">Labs for Educators</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>
