@@ -108,16 +108,16 @@
 
     <!-- Login Form -->
     <form id="loginForm" style="display: flex;">
-      <input type="email" placeholder="Email" required>
+      <input type="email"  placeholder="Email" required>
       <input type="password" placeholder="Password" required>
       <button type="submit">Login</button>
     </form>
 
     <!-- Signup Form -->
     <form id="signupForm">
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Create Password" required>
+      <input type="text" id="FullName" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Create Password" required>
       <button type="submit">Sign Up</button>
     </form>
 
@@ -162,8 +162,8 @@
        e.preventDefault();
 
        const fullName = document.getElementById("FullName").value;
-       const email = document.getElementById("Email").value;
-       const password = document.getElementById("Create Password").value;
+       const email = document.getElementById("email").value;
+       const password = document.getElementById("password").value;
 
        fetch("https://script.google.com/macros/s/AKfycbzg1YSBJ3YPK39t0nA2RUJrIQ6zIUKDEOIujglT-RSxsXk2zNYEqepHS2TSPFyHP7E8/exec", {
           method: "POST",
