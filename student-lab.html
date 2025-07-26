@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Lab - InsightX</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f8fafc;
+    }
+
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #1e3a8a;
+    }
+
+    .form-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .form-toggle button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      background-color: #1e3a8a;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form button {
+      padding: 10px;
+      background-color: #1e3a8a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .lab-access {
+      margin-top: 40px;
+    }
+
+    .example {
+      background: #f1f5f9;
+      padding: 20px;
+      border-left: 5px solid #1e3a8a;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #1e3a8a;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Student AI Lab - InsightX</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Login/Signup Toggle -->
+    <div class="form-toggle">
+      <button onclick="showForm('loginForm')">Login</button>
+      <button onclick="showForm('signupForm')">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" style="display: flex;">
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Create Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <!-- Lab Access Info -->
+    <div class="lab-access">
+      <h2>AI Project Learning with InsightX Copilot</h2>
+      <p>
+        As a student, you can build real-world AI projects using our <strong>Smart Learning Model (SLM)</strong>, which teaches step-by-step like a live professor.
+        The InsightX Copilot will guide you, debug with you, and evaluate your code — all powered by GPT-4.
+      </p>
+
+      <h3>Example Project: AI-Powered Resume Analyzer</h3>
+      <div class="example">
+        <p><strong>Goal:</strong> Build a GPT-based tool to give feedback on uploaded resumes.</p>
+        <ul>
+          <li><strong>Day 1:</strong> Learn prompt engineering and text evaluation</li>
+          <li><strong>Day 2:</strong> Upload resumes and parse text with JS/Python</li>
+          <li><strong>Day 3:</strong> Generate AI feedback with tone/style control</li>
+          <li><strong>Day 4:</strong> Build web interface and shareable results</li>
+        </ul>
+      </div>
+
+      <p>Use these labs as part of your college projects, portfolios, or competitions!</p>
+    </div>
+
+    <a href="index.html" class="btn-back">← Back to Home</a>
+  </div>
+
+  <script>
+    function showForm(formId) {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById(formId).style.display = 'flex';
+    }
+    // Default: Show login
+    showForm('loginForm');
+  </script>
+</body>
+</html>
