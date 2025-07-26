@@ -157,35 +157,34 @@
     
     
  </script>
-  
+ <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+       e.preventDefault();
 
-  <script>
-    document.getElementById("labSignupForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+       const fullName = document.getElementById("FullName").value;
+       const email = document.getElementById("Email").value;
+       const password = document.getElementById("Create Password").value;
 
-    const fullName = document.getElementById("fullName").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    fetch("https://script.google.com/macros/s/AKfycbzg1YSBJ3YPK39t0nA2RUJrIQ6zIUKDEOIujglT-RSxsXk2zNYEqepHS2TSPFyHP7E8/exec", {
-      method: "POST",
-      body: JSON.stringify({ fullName, email, password }),
-      headers: { "Content-Type": "application/json" }
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        alert("Signup successful!");
-      } else {
-        alert("Error saving data.");
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert("Failed to connect to Google Sheet.");
-    });
-  });
-</script>
+       fetch("https://script.google.com/macros/s/AKfycbzg1YSBJ3YPK39t0nA2RUJrIQ6zIUKDEOIujglT-RSxsXk2zNYEqepHS2TSPFyHP7E8/exec", {
+          method: "POST",
+          body: JSON.stringify({ FullName, Email, CreatePassword }),
+          headers: { "Content-Type": "application/json" }
+        })
+         .then(res => res.json())
+         .then(data => {
+         if (data.success) {
+           alert("Signup successful!");
+         } else {
+            alert("Error saving data.");
+         }
+      })
+       .catch(err => {
+         console.error(err);
+         alert("Failed to connect to Google Sheet.");
+      });
+   });
+    
+ </script>
 
 </body>
 </html>
