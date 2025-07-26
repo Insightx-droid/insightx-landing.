@@ -168,7 +168,7 @@
        fetch("https://script.google.com/macros/s/AKfycbzg1YSBJ3YPK39t0nA2RUJrIQ6zIUKDEOIujglT-RSxsXk2zNYEqepHS2TSPFyHP7E8/exec", {
           method: "POST",
           mode: "no-cors",
-          body: JSON.stringify({ fullName, email, password }),
+          body: JSON.stringify({ fullName, email, password }), 
           headers: { "Content-Type": "application/json" }
         })
         .then(res => res.json())
