@@ -115,7 +115,7 @@
 
     <!-- Signup Form -->
     <form id="signupForm">
-      <input type="text" id="FullName" placeholder="Full Name" required>
+      <input type="text" id="fullName" placeholder="Full Name" required>
       <input type="email" id="email" placeholder="Email" required>
       <input type="password" id="password" placeholder="Create Password" required>
       <button type="submit">Sign Up</button>
@@ -161,7 +161,7 @@
     document.getElementById("signupForm").addEventListener("submit", function (e) {
        e.preventDefault();
 
-       const fullName = document.getElementById("FullName").value;
+       const fullName = document.getElementById("fullName").value;
        const email = document.getElementById("email").value;
        const password = document.getElementById("password").value;
 
