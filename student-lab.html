@@ -158,31 +158,30 @@
     
   </script>
   <script>
-  document.getElementById("labSignupForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+    document.getElementById("labSignupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    const fullName = document.getElementById("fullName").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+      const fullName = document.getElementById("fullName").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-    fetch("https://script.google.com/macros/s/AKfycbzg1YSBJ3YPK39t0nA2RUJrIQ6zIUKDEOIujglT-RSxsXk2zNYEqepHS2TSPFyHP7E8/exec", {
-      method: "POST",
-      mode: "no-cors", // Needed for Google Apps Script unless you're handling CORS headers
-      body: JSON.stringify({ fullName, email, password }),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      fetch("https://script.google.com/macros/s/AKfycbzg1YSBJ3YPK39t0nA2RUJrIQ6zIUKDEOIujglT-RSxsXk2zNYEqepHS2TSPFyHP7E8/exec", {
+        method: "POST",
+        mode: "no-cors", // Needed for Google Apps Script unless you're handling CORS headers
+        body: JSON.stringify({ fullName, email, password }),
+        headers: {
+            "Content-Type": "application/json"
+        }
     })
     .then(() => {
-      alert("Signup submitted! ");
+       alert("Signup submitted! Please check your email if confirmation is enabled.");
     })
     .catch((err) => {
-      console.error(err);
-      alert("Failed to connect to Google Sheet.");
-    });
-  });
+       console.error(err);
+       alert("Failed to connect to Google Sheet.");
+     });
+   });
 </script>
-
 
 </body>
 </html>
