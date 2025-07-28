@@ -184,13 +184,13 @@
    });
 </script>
 <script>
-  document.getElementById("loginForm").addEventListener("submit", function (e) {
+   document.getElementById("loginForm").addEventListener("submit", function (e) {
      e.preventDefault();
 
-     const email = document.getElementById("email").value;
-     const password = document.getElementById("password").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-     fetch("https://script.google.com/macros/s/AKfycbyl60OU1VKt4Q9wiEM-GiVwcsmCg-m9Hf8vyJy-3d-qse31JqbnLh6mRu6sHWbJgD_q/exec?email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password))
+      fetch("https://script.google.com/macros/s/AKfycbyl60OU1VKt4Q9wiEM-GiVwcsmCg-m9Hf8vyJy-3d-qse31JqbnLh6mRu6sHWbJgD_q/exec?email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password))
         .then(res => res.json())
         .then(data => {
            if (data.success) {
