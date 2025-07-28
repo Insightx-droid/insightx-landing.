@@ -1,74 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart AI Lab - InsightX</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script>
-    const today = new Date().getDate(); // for day-wise simulation
-    const totalDays = 5; // you can change this to any number of days
+  <meta charset="UTF-8">
+  <title>InsightX AI Lab</title>
+  <script defer>
     const tasks = [
-      { title: "Day 1: Define Project Goal", instructions: "Understand the project objective. Define the problem clearly and write 3 goals in the textbox.", score: null },
-      { title: "Day 2: Collect & Prepare Data", instructions: "Upload or link data sources and clean them using AI scripts provided below.", score: null },
-      { title: "Day 3: Model Selection", instructions: "Use AI to suggest suitable ML models. Choose and justify your selection.", score: null },
-      { title: "Day 4: Run & Analyze Model", instructions: "Run the model using the provided tools. Paste the output and insights in the textbox.", score: null },
-      { title: "Day 5: Final Report & Review", instructions: "Summarize results. Submit the AI-generated PDF report and get final score.", score: null }
+      {
+        title: "Day 1: Define Project Goal",
+        instructions: "Write 3 clear objectives for your AI project.",
+      },
+      {
+        title: "Day 2: Dataset Collection Plan",
+        instructions: "Describe where you’ll get data and what it includes.",
+      },
+      {
+        title: "Day 3: Choose AI Tools",
+        instructions: "Mention which tools (e.g., Python, GPT, Teachable Machine) you plan to use.",
+      },
+      {
+        title: "Day 4: Model Training Strategy",
+        instructions: "Explain how you’ll train your model and validate it.",
+      },
+      {
+        title: "Day 5: Final Report Summary",
+        instructions: "Summarize your AI project results and learnings.",
+      }
     ];
 
     function loadTask() {
-      const container = document.getElementById("taskArea");
-      container.innerHTML = "";
-
-      if (today <= totalDays) {
-        const task = tasks[today - 1];
-        container.innerHTML = `
-          <h2 class="text-xl font-bold mb-2">${task.title}</h2>
-          <p class="mb-4">${task.instructions}</p>
-          <textarea id="userResponse" class="w-full h-32 p-2 border rounded mb-4" placeholder="Enter your response here..."></textarea>
-          <button onclick="submitTask()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Submit Task</button>
-        `;
-      } else {
-        container.innerHTML = `
-          <h2 class="text-xl font-bold mb-2">All Tasks Completed</h2>
-          <p class="mb-4">You’ve completed all tasks. Your final AI score is being calculated...</p>
-        `;
+      let currentDay = parseInt(localStorage.getItem("labDay") || "1");
+      if (currentDay > tasks.length) {
+        document.getElementById("taskArea").innerHTML = "<h2 class='text-xl font-bold'>🎉 Project Completed!</h2><p>Great work completing all tasks!</p>";
+        return;
       }
+
+      const task = tasks[currentDay - 1];
+      document.getElementById("taskArea").innerHTML = `
+        <h2 class="text-xl font-bold mb-2">${task.title}</h2>
+        <p class="mb-4">${task.instructions}</p>
+        <textarea id="response" class="w-full border p-2 mb-2 rounded" rows="5" placeholder="Write your task response here..."></textarea>
+        <button onclick="submitTask()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Task</button>
+      `;
     }
 
     function submitTask() {
-      const response = document.getElementById("userResponse").value;
-      if (!response.trim()) return alert("Please enter your response.");
-      const score = Math.floor(Math.random() * 21) + 80; // simulate AI score between 80-100
-      tasks[today - 1].score = score;
-      alert(`AI Feedback: Task submitted successfully. Score: ${score}/100`);
-      // Optionally send this data to a backend or Google Sheets here
+      const input = document.getElementById("response").value.trim();
+      if (input.length < 10) {
+        alert("Please write a more detailed response before submitting.");
+        return;
+      }
+
+      let currentDay = parseInt(localStorage.getItem("labDay") || "1");
+
+      // Simulated score calculation
+      const score = Math.floor(80 + Math.random() * 20); // score between 80–100
+      alert(`✅ Task submitted!\nScore: ${score}/100`);
+
+      // Store progress
+      localStorage.setItem(`task${currentDay}Response`, input);
+      localStorage.setItem(`task${currentDay}Score`, score);
+      localStorage.setItem("labDay", currentDay + 1);
+
+      loadTask(); // Load next task
     }
 
     window.onload = loadTask;
   </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+    }
+    .lab-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .back-home {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
-  <header class="bg-indigo-700 text-white py-4 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">InsightX Smart AI Lab</h1>
-      <button onclick="window.location.href='index.html'" class="bg-white text-indigo-700 px-3 py-1 rounded hover:bg-gray-200">Back to Home</button>
+<body>
+  <div class="lab-container">
+    <div class="title">🚀 InsightX AI Project Lab</div>
+    <div id="taskArea">
+      <!-- Task content loads here -->
     </div>
-  </header>
-
-  <main class="max-w-4xl mx-auto px-4 py-8">
-    <section class="bg-white rounded shadow p-6 mb-6">
-      <h2 class="text-2xl font-bold mb-4">AI-Driven Project Delivery</h2>
-      <p class="mb-4">Welcome to the AI-powered lab. Each day a new task will be released automatically by the system. Complete each task to progress. AI will evaluate your responses and generate daily scores and final reports.</p>
-    </section>
-
-    <section class="bg-white rounded shadow p-6" id="taskArea">
-      <!-- AI-delivered task will load here -->
-    </section>
-  </main>
-
-  <footer class="bg-gray-800 text-white text-center py-4 mt-10">
-    &copy; 2025 InsightX Lab | Powered by AI Copilot
-  </footer>
+    <a class="back-home" href="index.html">← Back to Home</a>
+  </div>
 </body>
 </html>
