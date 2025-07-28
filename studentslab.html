@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef1f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    h2 {
+      text-align: center;
+    }
+    #logout-btn {
+      background-color: #f44336;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Student Login</h2>
+
+  <div id="auth-section">
+    <input type="email" id="email" placeholder="Enter email">
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="signup()">Sign Up</button>
+    <button onclick="login()">Log In</button>
+  </div>
+
+  <div id="welcome-section" class="hidden">
+    <p id="welcome-msg"></p>
+    <button id="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+</div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js"></script>
+
+<script>
+  // Replace with your Firebase project config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAN6KT706rOwFVt7toKtzmIAvs0bpckJ6Y",
+    authDomain: "insightx-dcba0.firebaseapp.com",
+    projectId: "insightx-dcba0"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  function signup() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        alert("Signup successful!");
+        showWelcome(userCredential.user.email);
+      })
+      .catch((error) => alert(error.message));
+  }
+
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        alert("Login successful!");
+        showWelcome(userCredential.user.email);
+      })
+      .catch((error) => alert(error.message));
+  }
+
+  function logout() {
+    auth.signOut().then(() => {
+      document.getElementById("auth-section").classList.remove("hidden");
+      document.getElementById("welcome-section").classList.add("hidden");
+    });
+  }
+
+  function showWelcome(email) {
+    document.getElementById("auth-section").classList.add("hidden");
+    document.getElementById("welcome-section").classList.remove("hidden");
+    document.getElementById("welcome-msg").textContent = "Welcome, " + email;
+  }
+</script>
+
+</body>
+</html>
