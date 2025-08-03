@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InsightX AI Lab Tools</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f5f7fa;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    .filter-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    select {
+      padding: 8px;
+      font-size: 16px;
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .tool-card {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .tool-card h3 {
+      margin: 0 0 10px;
+      color: #0073e6;
+    }
+    .domain {
+      font-size: 14px;
+      font-weight: bold;
+      color: #444;
+      margin-bottom: 6px;
+    }
+    .audience-tag {
+      font-size: 13px;
+      background: #e0e0e0;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      margin: 4px 4px 0 0;
+    }
+    .back-button {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .back-button a {
+      padding: 10px 20px;
+      background: #0073e6;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>InsightX AI Lab Tools</h1>
+
+<div class="filter-section">
+  <label for="audience">Select Audience: </label>
+  <select id="audience" onchange="filterTools()">
+    <option value="All">All</option>
+    <option value="Students">Students</option>
+    <option value="Professionals">Professionals</option>
+    <option value="Founders">Founders</option>
+    <option value="Educators">Educators</option>
+  </select>
+</div>
+
+<div class="tool-grid" id="toolGrid">
+  <!-- Tool Cards Injected Here -->
+</div>
+
+<div class="back-button">
+  <a href="index.html">← Back to Home</a>
+</div>
+
+<script>
+const tools = [
+  {
+    title: "AI-Powered Social Media Generator",
+    domain: "AI in Marketing",
+    audience: ["Students", "Professionals", "Founders"]
+  },
+  {
+    title: "Dynamic Product Recommendation Engine",
+    domain: "AI in Marketing",
+    audience: ["Students", "Founders"]
+  },
+  {
+    title: "No-Code AI App Builder (Bubble + GPT)",
+    domain: "No Code Tools",
+    audience: ["Students", "Educators", "Professionals"]
+  },
+  {
+    title: "ML Churn Prediction (Excel + Python)",
+    domain: "ML in Business",
+    audience: ["Professionals", "Educators"]
+  },
+  {
+    title: "LinkedIn Lead Engine",
+    domain: "Growth Marketing",
+    audience: ["Founders", "Professionals"]
+  },
+  {
+    title: "Automated Reports with Notion AI",
+    domain: "No Code Tools",
+    audience: ["Educators", "Professionals"]
+  },
+  {
+    title: "Email Personalization Engine (NLP)",
+    domain: "AI in Marketing",
+    audience: ["Students", "Professionals"]
+  },
+  {
+    title: "Customer Journey Mapping with AI",
+    domain: "Growth Marketing",
+    audience: ["Founders", "Educators"]
+  }
+];
+
+function displayTools(filteredTools) {
+  const grid = document.getElementById("toolGrid");
+  grid.innerHTML = "";
+
+  filteredTools.forEach(tool => {
+    const card = document.createElement("div");
+    card.className = "tool-card";
+    card.innerHTML = `
+      <h3>${tool.title}</h3>
+      <div class="domain">Domain: ${tool.domain}</div>
+      ${tool.audience.map(aud => `<span class="audience-tag">${aud}</span>`).join("")}
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function filterTools() {
+  const selected = document.getElementById("audience").value;
+  if (selected === "All") {
+    displayTools(tools);
+  } else {
+    const filtered = tools.filter(tool => tool.audience.includes(selected));
+    displayTools(filtered);
+  }
+}
+
+window.onload = () => displayTools(tools);
+</script>
+
+</body>
+</html>
